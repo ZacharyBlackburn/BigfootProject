@@ -14,8 +14,10 @@ const Heatmap = () => {
 },[]);
   
   return (
+    <div className="mt-3">
     <div height='500px'>
     <div id='map'>
+    </div>
     </div>
     </div>
   )

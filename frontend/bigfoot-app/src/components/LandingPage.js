@@ -1,63 +1,56 @@
-import React, { useContext, useState  } from 'react';
-import UserContext from '../contexts/UserContext.js';
-import BigfootData from '../components/BigfootData.js';
-import Heatmap from '../components/Heatmap.js';
-import BigfootTypes from '../components/BigfootTypes.js';
-import { Container, Col, Row, Button, Form, Card } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Form, Card } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
-import CarouselComponent from '../components/CarouselComponent.js';
-import AddSighting from '../components/AddSighting.js';
 
 
-  const HomePage = (props) => {
-  const userContext = useContext(UserContext);
-  const { user } = userContext;
 
-  const [showLogin, setShowLogin] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
-  // const [show, setShow] = useState(false);
+const LandingPage = (props) => {
 
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
-  const handleCloseLogin = () => setShowLogin(false);
-  const handleShowLogin = () => setShowLogin(true);
-  const handleCloseSignup = () => setShowSignup(false);
-  const handleShowSignup = () => setShowSignup(true);
+    const [showLogin, setShowLogin] = useState(false);
+    const [showSignup, setShowSignup] = useState(false);
+    // const [showAlert, setShowAlert] = useState(false);
 
-// if (show) {
-//   return (
-      
-//     <>
-//       <Modal show={show} onHide={handleClose}>
-//         <Modal.Header closeButton>
-//           <Modal.Title>Is Bigfoot trying to hack us?</Modal.Title>
-//         </Modal.Header>
-//         <Modal.Body>You entered the wrong login information! Try again, please.</Modal.Body>
-//         <Modal.Footer>
-//           <Button variant="secondary" onClick={handleClose}>
-//             Close
-//           </Button>
-//         </Modal.Footer>
-//       </Modal>
-//     </>
-//   );
-// }
+    const handleCloseLogin = () => setShowLogin(false);
+    const handleShowLogin = () => setShowLogin(true);
+    const handleCloseSignup = () => setShowSignup(false);
+    const handleShowSignup = () => setShowSignup(true);
+    // const handleShowAlert = () => setShowAlert(true);
 
 
-  const handleSignupThenLogin = () => {
-      handleCloseSignup() 
-      handleShowLogin()
-  }
+    // if (showAlert) {
+    //     return (
+    //     <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible>
+    //         <Alert.Heading>Your username or password is incorrect.</Alert.Heading>
+    //         <p>
+    //         Sometimes Bigfoot gets mistaken for the Abominable Snowman. Sometimes you mistake your username and password for the one you use on an Abominal Snowman tracking website.
+    //         </p>
+    //         <hr />
+    //         <p className="mb-0">
+    //         Click{' '} 
+    //         <Alert.Link onClick={handleShowLogin}>here</Alert.Link>{' '} to try again.
+    //         </p>
+    //     </Alert>
+    //     );
+    // }
+        
 
+    // const handleCloseAndLogin = () => {
+    //     handleCloseLogin() 
+    //     if (props.loginError) {
+    //         setShowAlert(true);
+            
+    //     }
+    // }
 
-  return (
-    <div>
-      
-      {
-        !user
-        ?
-        <>
-                  <Card className="text-center">
+    const handleSignupThenLogin = () => {
+        handleCloseSignup() 
+        handleShowLogin()
+    }
+
+    return (
+
+    <>
+          <Card className="text-center">
             <Card.Header>
               <img src="photos/bigfoot-tracker-logo.svg"
                 height="100"
@@ -126,50 +119,9 @@ import AddSighting from '../components/AddSighting.js';
           </Modal.Footer>
           </Form>
           </Modal>
-        </>
-        :
-        <div>
-          <CarouselComponent stateSelected={props.stateSelected} setStateSelected={props.setStateSelected}/>
-          <br />
-          <Container>
-          <Col>
-          <Row>
-              { props.stateSelected &&
-                <BigfootData id="bigfoot-data" stateSelected={props.stateSelected}/>
-              }
-          </Row> 
-          </Col>
-            <Row>
-              <Col>
-                <h3>Bigfoot Variations</h3>
-                <br />
-              </Col>
-              <Col>
-                <h3>Heatmap of Sightings</h3>
-                <br />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <BigfootTypes />
-              </Col>
-              <Col>
-                <Heatmap />
-              </Col>
-            </Row>
-          </Container>
-          <br />
-          <br />
-          <br />
-          <Container>
-            <Row>
-            <AddSighting />
-            </Row>
-          </Container>
-        </div>
-      }
-    </div>
-  );
-};
+  </>
+                   
+    );
+}
 
-export default HomePage;
+export default LandingPage

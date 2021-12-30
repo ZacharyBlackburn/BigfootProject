@@ -43,3 +43,8 @@
   bottom: 0;
   width: 100%;
 }
+
+.dropdown-menu {
+  max-height: 300px;
+  overflow-y: auto;
+}

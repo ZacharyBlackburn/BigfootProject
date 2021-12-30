@@ -1,3 +1,4 @@
+import django_heroku
 from pathlib import Path
 import datetime
 
@@ -14,7 +15,7 @@ SECRET_KEY = 'django-insecure-pwgh!vm2bbr^wwtn(0&*mn06#h*vnkl@wz#n=70z@hinu9+zs+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -29,6 +30,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "core",
+    "user_sightings_api",
 ]
 
 MIDDLEWARE = [
@@ -68,8 +70,8 @@ WSGI_APPLICATION = 'bigfoot_proj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bigfoot_db',
     }
 }
 
@@ -137,3 +139,6 @@ JWT_AUTH = {
 
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())

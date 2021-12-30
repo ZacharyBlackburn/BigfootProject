@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Navbar from "./components/Navbar";
+import BigfootNavbar from "./components/Navbar"
 import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
 import UserContext from './contexts/UserContext.js';
-import CarouselComponent from './components/CarouselComponent';
-import { getLoggedInUser, login } from './api/UserAPI';
+import { getLoggedInUser, login, signupUser } from './api/UserAPI';
+// import AddSighting from './components/AddSighting';
+// import LandingPage from './components/LandingPage';
+// import CarouselComponent from './components/CarouselComponent';
+
 
 function App() {
+  
+  
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [ user, setUser ] = useState(null);
+  const [user, setUser ] = useState(null);
   const [error, setError] = useState(null);
+  const [loginError, setLoginError] = useState(false);
 
   console.log("USER: ", user)
   useEffect(() => {
@@ -39,12 +43,16 @@ function App() {
     }
     let response = await login(userObject);
     let data = await response.json();
+    console.log(data)
     if (data.token) {
+      setLoginError(false);
       localStorage.setItem("auth-user", `${data.token}`);
       setIsLoggedIn(true);
       setUser(data.user);
     }
+
   }
+  
 
   const handleLogout = () => {
     localStorage.setItem("auth-user", null);
@@ -52,17 +60,27 @@ function App() {
     setUser(null);
   }
 
+  const handleSignup = async (evt) => {
+    evt.preventDefault();
+    let userObject = {
+      'username': evt.target.username.value,
+      'password': evt.target.password.value,
+    }
+    let response = await signupUser(userObject);
+    let data = await response.json();
+    console.log(data)
+  }
+
+  const [stateSelected, setStateSelected] = useState(false);
+
 
   return (
     <div className="App">
       <Router>
-        <Navbar />
-        <CarouselComponent />
+        <BigfootNavbar stateSelected={stateSelected} setStateSelected={setStateSelected} isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} handleSignup={handleSignup} user={user}/>
         <UserContext.Provider value={{ user: user, setUser: handleLogin, error: error }}>
           <Routes>
-            <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>} />
-            <Route path="/login" element={<LoginPage isLoggedIn={isLoggedIn} handleLogin={handleLogin} handleLogout={handleLogout} user={user} />} />
-            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/" element={<HomePage stateSelected={stateSelected} setStateSelected={setStateSelected} isLoggedIn={isLoggedIn} handleLogout={handleLogout} handleLogin={handleLogin} handleSignup={handleSignup} />} />
           </Routes>
         </UserContext.Provider>
       </Router>
