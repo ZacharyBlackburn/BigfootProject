@@ -17,8 +17,7 @@ function App() {
   const [user, setUser ] = useState(null);
   const [error, setError] = useState(null);
   const [loginError, setLoginError] = useState(false);
-
-  console.log("USER: ", user)
+  
   useEffect(() => {
     const getUser = async () => {
       if (localStorage.getItem("auth-user") !== 'null') {

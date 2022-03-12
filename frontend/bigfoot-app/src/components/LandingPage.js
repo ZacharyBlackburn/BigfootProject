@@ -8,39 +8,12 @@ const LandingPage = (props) => {
 
     const [showLogin, setShowLogin] = useState(false);
     const [showSignup, setShowSignup] = useState(false);
-    // const [showAlert, setShowAlert] = useState(false);
 
     const handleCloseLogin = () => setShowLogin(false);
     const handleShowLogin = () => setShowLogin(true);
     const handleCloseSignup = () => setShowSignup(false);
     const handleShowSignup = () => setShowSignup(true);
-    // const handleShowAlert = () => setShowAlert(true);
 
-
-    // if (showAlert) {
-    //     return (
-    //     <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible>
-    //         <Alert.Heading>Your username or password is incorrect.</Alert.Heading>
-    //         <p>
-    //         Sometimes Bigfoot gets mistaken for the Abominable Snowman. Sometimes you mistake your username and password for the one you use on an Abominal Snowman tracking website.
-    //         </p>
-    //         <hr />
-    //         <p className="mb-0">
-    //         Click{' '} 
-    //         <Alert.Link onClick={handleShowLogin}>here</Alert.Link>{' '} to try again.
-    //         </p>
-    //     </Alert>
-    //     );
-    // }
-        
-
-    // const handleCloseAndLogin = () => {
-    //     handleCloseLogin() 
-    //     if (props.loginError) {
-    //         setShowAlert(true);
-            
-    //     }
-    // }
 
     const handleSignupThenLogin = () => {
         handleCloseSignup() 

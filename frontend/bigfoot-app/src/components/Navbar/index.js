@@ -8,7 +8,6 @@ const BigfootNavbar = (props) => {
     const [show, setShow] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const [showSignup, setShowSignup] = useState(false);
-    // const [showAlert, setShowAlert] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -16,37 +15,10 @@ const BigfootNavbar = (props) => {
     const handleShowLogin = () => setShowLogin(true);
     const handleCloseSignup = () => setShowSignup(false);
     const handleShowSignup = () => setShowSignup(true);
-    // const handleShowAlert = () => setShowAlert(true);
-    // const closeShowAlert = () => setShowAlert(false);
     const handleCloseAndLogout = () => {
         handleClose() 
         props.handleLogout()
     }
-
-
-    // if (showAlert) {
-    //     return (
-    //     <Alert variant="danger" onClose={() => closeShowAlert()} dismissible>
-    //         <Alert.Heading>Your username or password is incorrect.</Alert.Heading>
-    //         <p>
-    //         Sometimes Bigfoot gets mistaken for the Abominable Snowman. Sometimes you mistake your username and password for the one you use on an Abominal Snowman tracking website.
-    //         </p>
-    //         <hr />
-    //         <p className="mb-0">
-    //         <Alert.Link href="/">Back</Alert.Link>{' '}
-    //         </p>
-    //     </Alert>
-    //     );
-    // }
-        
-
-    // const handleCloseAndLogin = () => {
-    //     handleCloseLogin() 
-    //     if (props.loginError) {
-    //         handleShowAlert();
-            
-    //     }
-    // }
 
     const handleSignupThenLogin = () => {
         handleCloseSignup() 

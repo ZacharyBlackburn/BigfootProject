@@ -18,10 +18,6 @@ const AddSighting = ({ onAdd }) => {
     API.get("/", {params:{}, headers: {Authorization: `JWT ${localStorage.getItem("auth-user")}`}})
       .then((res) => {
         setSightings(res.data);
-        // setYear(res[0].name)
-        // setMonth(res[0].genre)
-        // setDescription(res[0].starring)
-        // setSightingId(res[0].id)
       })
       .catch(console.error);
   };
@@ -138,16 +134,12 @@ const AddSighting = ({ onAdd }) => {
                     <td>{sighting.month}</td>
                     <td>{sighting.description}</td>
                     <td>
-                      <i
-                        className="fa fa-pencil-square text-primary d-inline"
-                        // aria-hidden="true"
+                      <p className="text-danger d-inline mx-3"
                         onClick={() => selectSighting(sighting.id)}
-                      ></i>
-                      <i
-                        className="fa fa-trash-o text-danger d-inline mx-3"
-                        // aria-hidden="true"
+                      >Edit</p>
+                      <p className="text-danger d-inline mx-3"
                         onClick={() => onDelete(sighting.id)}
-                      ></i>
+                      >Delete</p>
                     </td>
                   </tr>
                 );

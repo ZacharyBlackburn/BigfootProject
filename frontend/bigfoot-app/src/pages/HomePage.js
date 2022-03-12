@@ -15,33 +15,11 @@ import AddSighting from '../components/AddSighting.js';
 
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
-  // const [show, setShow] = useState(false);
 
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
   const handleCloseLogin = () => setShowLogin(false);
   const handleShowLogin = () => setShowLogin(true);
   const handleCloseSignup = () => setShowSignup(false);
   const handleShowSignup = () => setShowSignup(true);
-
-// if (show) {
-//   return (
-      
-//     <>
-//       <Modal show={show} onHide={handleClose}>
-//         <Modal.Header closeButton>
-//           <Modal.Title>Is Bigfoot trying to hack us?</Modal.Title>
-//         </Modal.Header>
-//         <Modal.Body>You entered the wrong login information! Try again, please.</Modal.Body>
-//         <Modal.Footer>
-//           <Button variant="secondary" onClick={handleClose}>
-//             Close
-//           </Button>
-//         </Modal.Footer>
-//       </Modal>
-//     </>
-//   );
-// }
 
 
   const handleSignupThenLogin = () => {
@@ -57,7 +35,7 @@ import AddSighting from '../components/AddSighting.js';
         !user
         ?
         <>
-                  <Card className="text-center">
+          <Card className="text-center">
             <Card.Header>
               <img src="photos/bigfoot-tracker-logo.svg"
                 height="100"
@@ -75,29 +53,29 @@ import AddSighting from '../components/AddSighting.js';
             <Card.Footer className="text-muted">The world's best bigfoot tracker.</Card.Footer>
           </Card>          
           <Modal show={showSignup} onHide={handleCloseSignup}>
-          <Modal.Header closeButton>
-              <Modal.Title>Sign Up and Track Bigfoot</Modal.Title>
-          </Modal.Header>
-          <Form onSubmit={props.handleSignup}>
-          <Modal.Body>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Username:</Form.Label>
-                  <Form.Control type="text" name='username' placeholder="Sasquatch Jr" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" name='password' placeholder="Password" />
-              </Form.Group>
-          </Modal.Body>
-          <Modal.Footer>
+            <Modal.Header closeButton>
+                <Modal.Title>Sign Up and Track Bigfoot</Modal.Title>
+            </Modal.Header>
+            <Form onSubmit={props.handleSignup}>
+            <Modal.Body>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control type="text" name='username' placeholder="Sasquatch Jr" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" name='password' placeholder="Password" />
+                </Form.Group>
+            </Modal.Body>
+            <Modal.Footer>
               <Button variant="secondary" onClick={handleCloseSignup}>
               Cancel
               </Button>
               <Button variant="primary" type="submit" onClick={handleSignupThenLogin}>
               Sign Up
               </Button>
-          </Modal.Footer>
-          </Form>
+            </Modal.Footer>
+            </Form>
           </Modal>
           <Modal show={showLogin} onHide={handleCloseLogin}>
           <Modal.Header closeButton>
@@ -105,16 +83,14 @@ import AddSighting from '../components/AddSighting.js';
           </Modal.Header>
           <Form onSubmit={props.handleLogin}>
           <Modal.Body>
-              
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Label>Username</Form.Label>
-                      <Form.Control type="text" name='username' placeholder="Enter username" />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Label>Password</Form.Label>
-                      <Form.Control type="password" name='password' placeholder="Password" />
-                  </Form.Group>
-              
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Username</Form.Label>
+                <Form.Control type="text" name='username' placeholder="Enter username" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" name='password' placeholder="Password" />
+            </Form.Group>
           </Modal.Body>
           <Modal.Footer>
               <Button variant="secondary" onClick={handleCloseLogin}>
@@ -139,6 +115,11 @@ import AddSighting from '../components/AddSighting.js';
               }
           </Row> 
           </Col>
+          </Container>
+          <Container className="mt-5" fluid="md">
+            <Row>
+              <Col></Col>
+            </Row>
             <Row>
               <Col>
                 <h3>Bigfoot Variations</h3>

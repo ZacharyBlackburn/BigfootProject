@@ -1,4 +1,4 @@
-import django_heroku
+# import django_heroku
 from pathlib import Path
 import datetime
 
@@ -141,4 +141,4 @@ JWT_AUTH = {
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Configure Django App for Heroku.
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
